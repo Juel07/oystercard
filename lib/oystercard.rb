@@ -5,6 +5,7 @@ class Oystercard
 
   def initialize
     @balance = 0
+    @in_journey = false
   end
 
   def top_up(money)
@@ -14,6 +15,19 @@ class Oystercard
 
   def deduct(money)
     @balance -= money
+  end
+
+  def in_journey?
+    @in_journey
+  end
+
+  def touch_in
+    fail "Cannot touch in: not enough funds" if no_funds?
+    @in_journey = true
+  end
+
+  def touch_out
+    @in_journey = false
   end
 
   private
