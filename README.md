@@ -49,18 +49,33 @@ In order to get through the barriers
 As a customer
 I need to touch in and out
 ```
+
+- Class: Oystercard
+- Variable: @in_journey (initialize with false state)
+- Method: touch_in, touch_out, in_journey?
+
 #### 9: Checking the minimum balance on touch in
 ```
 In order to pay for my journey
 As a customer
 I need to have the minimum amount for a single journey
 ```
+
+- Class: Oystercard
+- Constant: MIN_LIMIT
+- Method: touch_in, minimum_balance
+
 #### 10: Charging for the journey
 ```
 In order to pay for my journey
 As a customer
 I need to pay for my journey when it's complete
 ```
+
+- Class: Oystercard
+- Constant: FARE
+- Method: touch_out, deduct(FARE)
+
 #### 11: Saving the entry station
 ```
 In order to pay for my journey
