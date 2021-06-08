@@ -19,12 +19,12 @@ describe Oystercard do
     end
   end
 
-  describe "#deduct" do
-    it "can deduct from balance" do
-      oystercard.top_up(20)
-      expect { oystercard.deduct 10 }.to change { oystercard.balance }.by -10
-    end
-  end
+  # describe "#deduct" do
+  #   it "can deduct from balance" do
+  #     oystercard.top_up(20)
+  #     expect { oystercard.deduct 10 }.to change { oystercard.balance }.by -10
+  #   end
+  # end
   context "When starting journey" do
     it "is not a journey to start" do
       expect(oystercard).not_to be_in_journey
@@ -42,10 +42,17 @@ describe Oystercard do
       expect { oystercard.touch_in }.to raise_error(error_msg)
     end
   end
+  context "When ending journey" do
+    it "can touch out" do
+      oystercard.touch_in
+      oystercard.touch_out
+      expect(oystercard).not_to be_in_journey
+    end
 
-  it "can touch out" do
-    oystercard.touch_in
-    oystercard.touch_out
-    expect(oystercard).not_to be_in_journey
+    it "can charge for the journey" do
+      fare = Oystercard::FARE
+      oystercard.touch_in
+      expect { oystercard.touch_out }.to change { oystercard.balance }.by -fare
+    end
   end
 end
