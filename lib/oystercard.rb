@@ -7,7 +7,6 @@ class Oystercard
 
   def initialize
     @balance = 0
-    @in_journey = false
   end
 
   def top_up(money)
@@ -16,18 +15,17 @@ class Oystercard
   end
 
   def in_journey?
-    @in_journey
+    !!@entry_station
   end
 
   def touch_in(station)
-    min_balance
-    @in_journey = true
+    check_min_balance
     @entry_station = station
   end
 
   def touch_out
     deduct(FARE)
-    @in_journey = false
+    @entry_station = nil
   end
 
   private
@@ -40,7 +38,7 @@ class Oystercard
     raise "Pound #{MAX_LIMIT} limit reached!" if @balance >= MAX_LIMIT
   end
 
-  def min_balance
+  def check_min_balance
     raise "You have insufficient funds!" if @balance == MIN_LIMIT
   end
 end
