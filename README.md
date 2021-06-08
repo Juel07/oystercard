@@ -82,6 +82,11 @@ In order to pay for my journey
 As a customer
 I need to know where I've travelled from
 ```
+
+- Class: Oystercard
+- Variable: @entry_station
+- Method: touch_in(station)
+
 #### 12: Adding the journey history
 ```
 In order to know where I have been
