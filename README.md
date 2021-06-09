@@ -92,12 +92,12 @@ I need to know where I've travelled from
 In order to know where I have been
 As a customer
 I want to see to all my previous trips
+```
 
 - Class: Oystercard
 - Variable: @exit_station, @journeys (@journeys = {})
 - Method: touch_out(station), store_journey
 
-```
 #### 13: Creating the station class
 ```
 In order to know how far I have travelled
