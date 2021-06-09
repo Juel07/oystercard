@@ -104,6 +104,10 @@ In order to know how far I have travelled
 As a customer
 I want to know what zone a station is in
 ```
+
+- Class: Station
+- Variable: @name, zone
+
 #### 14: Handing a journey without a touch out
 ```
 In order to be charged correctly
